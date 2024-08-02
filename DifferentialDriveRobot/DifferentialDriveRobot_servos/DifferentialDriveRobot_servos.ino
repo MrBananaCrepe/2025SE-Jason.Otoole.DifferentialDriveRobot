@@ -9,14 +9,16 @@
 */
 
 #include <Servo.h>
-Servo servo;
+
+Servo myServo;
+
+int pos = 0;
 
 void setup() {
-  servo.attach(5, 700, 2300);
+  myServo.attach(11);
+  myServo.write(90);
 }
 
 void loop() {
-  val = map(100, 0, 100, 1500, 2300)
-  servo.writeMicroseconds(val);  //2300 fast forward, 700 fast backards, 1500 stop
-  delay(100); // requires short delay as loop breaks frequency
+  myServo.write(180);
 }
