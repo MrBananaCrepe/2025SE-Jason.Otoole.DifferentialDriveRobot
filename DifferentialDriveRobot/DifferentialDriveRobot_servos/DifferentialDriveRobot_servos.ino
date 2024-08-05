@@ -1,18 +1,53 @@
-/*
-  Purpose: Basic example of controlling a continuos servo
-  Notes: 
-    1. See attached schematic
-    2. 100µF 25v capacitor
-    3. Servo may need screw adjustment to set 1500 as stop
-  Author: Ben Jones 25/4/24
-  Contact: benjmain.jones21@det.nsw.edu.au
-*/
-
 #include <Servo.h>
+#include <Arduino.h>
+
+#define SERVO_RIGHTPIN 12
+#define SERVO_LEFTPIN 11
+#define SENSOR_RIGHTPIN 10
+#define SENSOR_LEFTPIN 9
 
 Servo myServo;
 
 int pos = 0;
+
+class Servo
+{
+private:
+  byte pin;
+public:
+  Servo() {} // no use
+
+  Servo(byte pin)
+  {
+    this->pin = pin;
+  }
+
+  void init()
+  {
+    pinMode(pin, OUTPUT);
+  }
+
+  void init(byte defaultState)
+  {
+    init();
+    if (defaultState == 1) {
+      on();
+    }
+    else {
+      off();
+    }
+  }
+
+  void on()
+  {
+    digitalWrite(pin, 1);
+  }
+
+  void off()
+  {
+    digitalWrite(pin, 0);
+  }
+};
 
 void setup() {
   myServo.attach(11);
