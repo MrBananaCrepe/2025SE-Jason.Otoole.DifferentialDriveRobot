@@ -1,6 +1,9 @@
 #include <Servo.h>
 #include <Arduino.h>
 
+#include "DifferentialDriveRobot_servos.h"
+#include "DifferentialDriveRobot_servos.cpp"
+
 #define SERVO_PINR 9
 #define SERVO_PINL 11
 int signalPinL = 12;
