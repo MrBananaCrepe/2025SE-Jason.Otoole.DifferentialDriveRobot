@@ -10,8 +10,8 @@
 #define signalPinR = 13
 
 
-myServo servoR(SERVO_PINR)
-myServo servoL(SERVO_PINL)
+myServo servoR(SERVO_PINR);
+myServo servoL(SERVO_PINL);
 
 void setup () {
   Serial.begin(9600);
