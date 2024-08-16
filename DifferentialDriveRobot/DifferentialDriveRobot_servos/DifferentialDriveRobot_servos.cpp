@@ -1,4 +1,4 @@
-#include "DifferentialDriveRobot.h"
+#include "DifferentialDriveRobot_servos.h"
 
 Servo::Servo(byte pin)
 {
@@ -7,31 +7,28 @@ Servo::Servo(byte pin)
 
 void Servo::init()
 {
-  pinMode(pin, OUTPUT);
+  servo.attach(pin);
 }
 
-void Servo::init(byte defaultState)
+void Servo::init(Servo servo)
 {
   init();
-  if (defaultState == 1) {
-    on();
-  }
-  else {
-    off();
-  }
 }
 
-void Servo::on()
+void Servo::forward()
 {
-  digitalWrite(pin, 1);
+  servo.write(2300);
 }
 
-void Servo::off()
+void Servo::backward()
 {
-  digitalWrite(pin, 0);
+  servo.write(700);
 }
 
-
+void Servo::stop()
+{
+  servo.write(1500);
+}
 
 
 

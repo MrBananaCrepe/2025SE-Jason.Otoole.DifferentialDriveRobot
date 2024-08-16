@@ -1,55 +1,54 @@
 #include <Servo.h>
 #include <Arduino.h>
 
-#include "DifferentialDriveRobot.h"
-#include "DifferentialDriveRobot.cpp"
+#include "DifferentialDriveRobot_servos.h"
+#include "DifferentialDriveRobot_servos.cpp"
 
 #define SERVO_PINR 9
 #define SERVO_PINL 11
 #define signalPinL = 12
 #define signalPinR = 13
 
-Servo myServoL;
-Servo myServoR;
 
-Servo servo(SERVO_PIN)
+Servo servoR(SERVO_PINR)
+Servo servoL(SERVO_PINL)
 
 void setup () {
   Serial.begin(9600);
-  pinMode(signalPinL, INPUT);
-  pinMode(signalPinR, INPUT);
+  ServoL.init();
+  ServoR.init();
 
   // 2300 = forward | 700 = backward | 1500 = stop
-  myServoL.attach(SERVO_PINR, 700, 2300);
-  myServoR.attach(SERVO_PINL, 2300, 700); // flipped bc servo reversed
+  ServoL.attach(SERVO_PINR, 700, 2300);
+  ServoR.attach(SERVO_PINL, 2300, 700); // flipped bc servo reversed
 }
 
 void loop() {
   // drive forward
   if(1 == digitalRead(signalPinL && signalPinR)) {
-    myServoL.writeMicroseconds(2300);
-    myServoR.writeMicroseconds(2300);
+    ServoL.forward()
+    ServoR.forward()
     delay(100);
   }
 
   // turn left
   else if(1 == digitalRead(signalPinL) && 0 == digitalRead(signalPinR)) {
-    myServoL.writeMicroseconds(2300);
-    myServoR.writeMicroseconds(1500);
+    ServoL.forward()
+    ServoR.stop()
     delay(100);
   }
 
   // turn right
   else if(0 == digitalRead(signalPinL) && 1 == digitalRead(signalPinR)) {
-    myServoL.writeMicroseconds(1500);
-    myServoR.writeMicroseconds(2300);
+    ServoL.stop()
+    ServoR.forward
     delay(100);
   }
 
   // stop
   else if(0 == digitalRead(signalPinL) && 0 == digitalRead(signalPinR)) {
-    myServoL.writeMicroseconds(1500);
-    myServoR.writeMicroseconds(1500);
+    ServoL.stop()
+    ServoR.stop()
     delay(100);
   }
 }
