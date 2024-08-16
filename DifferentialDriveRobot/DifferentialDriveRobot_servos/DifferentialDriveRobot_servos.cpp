@@ -1,31 +1,31 @@
 #include "DifferentialDriveRobot_servos.h"
 
-Servo::Servo(byte pin)
+myServo::Servo(byte pin)
 {
   this->pin = pin;
 }
 
-void Servo::init()
+void myServo::init()
 {
   servo.attach(pin);
 }
 
-void Servo::init(byte pin)
+void myServo::init(byte pin)
 {
   init();
 }
 
-void Servo::forward()
+void myServo::forward()
 {
   servo.write(2300);
 }
 
-void Servo::backward()
+void myServo::backward()
 {
   servo.write(700);
 }
 
-void Servo::stop()
+void myServo::stop()
 {
   servo.write(1500);
 }

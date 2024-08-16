@@ -4,15 +4,15 @@
 #include <Arduino.h>
 #include <Servo.h>
 
-class Servo
+class myServo
 {
 private:
   byte pin;
-  Servo servo;
+  myServo servo;
 
 public:
-  Servo() {} //no use
-  Servo(byte pin);
+  myServo() {} //no use
+  myServo(byte pin);
 
   void init();
   void init(byte pin);
