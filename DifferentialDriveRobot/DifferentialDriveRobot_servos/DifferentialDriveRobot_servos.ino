@@ -18,9 +18,6 @@ void setup () {
   ServoL.init();
   ServoR.init();
 
-  // 2300 = forward | 700 = backward | 1500 = stop
-  ServoL.attach(SERVO_PINR, 700, 2300);
-  ServoR.attach(SERVO_PINL, 2300, 700); // flipped bc servo reversed
 }
 
 void loop() {
@@ -33,15 +30,15 @@ void loop() {
 
   // turn left
   else if(1 == digitalRead(signalPinL) && 0 == digitalRead(signalPinR)) {
-    ServoL.forward()
-    ServoR.stop()
+    ServoL.backward()
+    ServoR.forward()
     delay(100);
   }
 
   // turn right
   else if(0 == digitalRead(signalPinL) && 1 == digitalRead(signalPinR)) {
-    ServoL.stop()
-    ServoR.forward
+    ServoL.forward()
+    ServoR.backward()
     delay(100);
   }
 

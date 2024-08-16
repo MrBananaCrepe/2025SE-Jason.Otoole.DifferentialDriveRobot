@@ -15,7 +15,7 @@ public:
   Servo(byte pin);
 
   void init();
-  void init(Servo servo);
+  void init(byte pin);
 
   void forward();
   void backward();

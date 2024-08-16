@@ -10,7 +10,7 @@ void Servo::init()
   servo.attach(pin);
 }
 
-void Servo::init(Servo servo)
+void Servo::init(byte pin)
 {
   init();
 }
