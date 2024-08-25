@@ -15,8 +15,8 @@ myServo servoL(SERVO_PINL);
 
 void setup () {
   Serial.begin(9600);
-  ServoL.init();
-  ServoR.init();
+  servoL.init();
+  servoR.init();
 
 }
 
